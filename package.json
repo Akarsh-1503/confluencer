@@ -1,0 +1,21 @@
+{
+  "name": "confluencr-ledger",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Multi-tenant ledger API and console: accounts, immutable transactions, atomic transfers and organization RBAC",
+  "scripts": {
+    "setup": "npm --prefix backend install && npm --prefix frontend install && npm run env:setup && npm run seed",
+    "env:setup": "node -e \"const fs=require('fs');for(const d of ['backend','frontend']){const e=d+'/.env',x=d+'/.env.example';if(fs.existsSync(x)&&!fs.existsSync(e)){fs.copyFileSync(x,e);console.log('created '+e)}}\"",
+    "seed": "npm --prefix backend run seed",
+    "migrate": "npm --prefix backend run migrate",
+    "dev": "npm --prefix backend run dev & npm --prefix frontend run dev",
+    "dev:api": "npm --prefix backend run dev",
+    "dev:web": "npm --prefix frontend run dev",
+    "build": "npm --prefix backend run build && npm --prefix frontend run build",
+    "test": "npm --prefix backend test",
+    "typecheck": "npm --prefix backend run typecheck && npm --prefix frontend run typecheck"
+  },
+  "engines": {
+    "node": ">=20.11"
+  }
+}
